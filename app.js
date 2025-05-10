@@ -1,13 +1,12 @@
 const express = require('express');
-
+const connectToDatabase = require('./src/config/database.js');
+const routes = require('./src/routes');
 const app = express();
 
-app.use(express.json());
-
-app.get('/', (req, res) => {
-    res.send('Olá!');
-});
+routes(app);
 
 app.listen(3000, () => {
     console.log('Servidor online.');
 });
+
+connectToDatabase();
